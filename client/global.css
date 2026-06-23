@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/sora';
+
+@theme inline {
+    --font-sans: 'Sora Variable', sans-serif;
+}
+
+@layer base {
+    html {
+        @apply font-sans;
+    }
+    button:not(:disabled),
+    [role='button']:not(:disabled) {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,36 @@
+# Dependency/build outputs
+node_modules
+dist
+dist-ssr
+.tanstack
+coverage
+*.tsbuildinfo
+.turbo
+
+# VCS/editor state
+.git
+.gitignore
+.github
+.vscode
+.idea
+.claude
+.DS_Store
+
+# Local env/secrets; configure these in Coolify instead
+.env
+.env.*
+*.local
+
+# Logs/caches
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store
+.eslintcache
+
+# Docker metadata
+Dockerfile*
+docker-compose*.yml
