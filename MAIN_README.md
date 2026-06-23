@@ -80,27 +80,16 @@ If you are using an agent, use the prompt in that section as a starting point. I
 
 These recipes can be applied with an agent, or copied from the applied branches.
 
-### Feature name
-Shortly explain what this adds and when someone should use it.
+### Shadcn/ui
+Shadcn is one of the most popular ui libraries that gives fullcontrol and extensibility over your components.
 
-<details>
-<summary>Agent prompt</summary>
+To create a fully customizable theme visit [shadcn/create ⟶](https://ui.shadcn.com/create).
 
-```text
-Add <feature> to this vite-stack project.
-
-Requirements:
-- Keep changes minimal
-- Follow the existing project style
-- Update the UI with one simple example
-- Add only the dependencies needed for this feature
-```
-
-</details>
+> 💡 The branch was set up using `pnpm dlx shadcn@latest init --preset b27Gdgau --base base --pointer`, and the font changed from `Inter` back to `Sora`.
 
 Not using an agent?
 
-- [Applied branch](../../tree/recipe/feature-name)
-- [Diff](../../compare/main...recipe/feature-name)
+- [Applied branch](../../tree/recipe/shadcn-ui)
+- [Diff](../../compare/main...recipe/shadcn-ui)
 
 <!-- recipes:end -->
