@@ -1,0 +1,34 @@
+name: Sync main README
+
+on:
+  push:
+    branches: [recipes]
+    paths:
+      - MAIN_README.md
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Copy generated README from recipes
+        run: |
+          git fetch origin recipes
+          git show origin/recipes:MAIN_README.md > README.md
+
+      - uses: peter-evans/create-pull-request@v8
+        with:
+          branch: sync/readme-from-recipes
+          title: 'docs: sync recipes into README'
+          commit-message: 'docs: sync recipes into README'
+          body: 'Generated from `MAIN_README.md` on the `recipes` branch.'
+          labels: documentation

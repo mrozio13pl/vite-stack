@@ -1,0 +1,14 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "prepare": "husky",
+        "update-main-readme": "node scripts/update-main-readme.mjs MAIN_README.md"
+    },
+    "dependencies": {
+        "ultramatter": "^0.0.4"
+    },
+    "devDependencies": {
+        "husky": "^9.1.7"
+    }
+}
