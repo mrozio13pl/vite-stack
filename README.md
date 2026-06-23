@@ -73,3 +73,23 @@ Pre-commit hooks run through `simple-git-hooks` and `nano-staged`, so changed fi
 The base is meant to be extended through the sections below. Each feature should explain what it adds, why it is useful, and how it fits into the existing app.
 
 If you are using an agent, use the prompt in that section as a starting point. If you are not using an agent, follow the docs and examples directly.
+
+<!-- recipes:start -->
+
+## Recipes
+
+These recipes can be applied with an agent, or copied from the applied branches.
+
+### Shadcn/ui
+Shadcn is one of the most popular ui libraries that gives fullcontrol and extensibility over your components.
+
+To create a fully customizable theme visit [shadcn/create ⟶](https://ui.shadcn.com/create).
+
+> 💡 The branch was set up using `pnpm dlx shadcn@latest init --preset b27Gdgau --base base --pointer`, and the font changed from `Inter` back to `Sora`.
+
+Not using an agent?
+
+- [Applied branch](../../tree/recipe/shadcn-ui)
+- [Diff](../../compare/main...recipe/shadcn-ui)
+
+<!-- recipes:end -->
