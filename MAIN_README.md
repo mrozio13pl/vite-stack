@@ -2,7 +2,22 @@
 
 A full-stack template combining best of technologies from JS ecosystem.
 
-[TOC]
+<!-- toc:start -->
+[Motivation](#motivation)
+
+[Introduction](#introduction)
+- [The base stack](#the-base-stack)
+  - [App shell](#app-shell)
+  - [Routing](#routing)
+  - [API](#api)
+  - [Styling](#styling)
+  - [Code quality](#code-quality)
+
+[Expanding the stack](#expanding-the-stack)
+
+[Recipes](#recipes)
+- [Shadcn/ui](#shadcnui)
+<!-- toc:end -->
 
 ## Motivation
 

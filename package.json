@@ -6,6 +6,7 @@
         "update-main-readme": "node scripts/update-main-readme.mjs MAIN_README.md"
     },
     "dependencies": {
+        "github-slugger": "^2.0.0",
         "ultramatter": "^0.0.4"
     },
     "devDependencies": {
