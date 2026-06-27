@@ -33,6 +33,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates dumb-init \
     && rm -rf /var/lib/apt/lists/*
 
+# Keep the installed dependency tree from the build stage. Runtime still needs
+# drizzle-kit if you run migrations from the container.
 COPY --from=build /app /app
 
 EXPOSE 3000

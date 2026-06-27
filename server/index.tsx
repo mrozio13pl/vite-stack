@@ -2,11 +2,12 @@
 
 import { createRouter } from './base';
 import { testRouter } from './routes/test';
+import { todosRouter } from './routes/todos';
 import { serveStatic } from '@hono/node-server/serve-static';
 
 const app = createRouter();
 
-const api = createRouter().route('/test', testRouter);
+const api = createRouter().route('/test', testRouter).route('/todos', todosRouter);
 
 api.use('*', async (c) => c.notFound());
 

@@ -11,14 +11,19 @@
         "format:check": "oxfmt --check",
         "dev": "vite",
         "build": "vite build --mode client && vite build",
-        "start": "node ."
+        "start": "node .",
+        "db:generate": "drizzle-kit generate",
+        "db:migrate": "drizzle-kit migrate",
+        "db:studio": "drizzle-kit studio"
     },
     "dependencies": {
         "@fontsource-variable/sora": "^5.2.8",
         "@hono/node-server": "^2.0.5",
         "@tanstack/react-query": "^5.101.0",
         "@tanstack/react-router": "^1.170.16",
+        "drizzle-orm": "^0.45.2",
         "hono": "^4.12.26",
+        "pg": "^8.22.0",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
         "tailwindcss": "^4.3.1"
@@ -30,9 +35,11 @@
         "@tanstack/react-router-devtools": "^1.167.0",
         "@tanstack/router-plugin": "^1.168.18",
         "@types/node": "^25.9.4",
+        "@types/pg": "^8.20.0",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
         "@vitejs/plugin-react": "^6.0.2",
+        "drizzle-kit": "^0.31.10",
         "nano-staged": "^1.0.2",
         "oxfmt": "^0.55.0",
         "oxlint": "^1.70.0",
