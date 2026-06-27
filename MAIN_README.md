@@ -16,6 +16,7 @@ A full-stack template combining best of technologies from JS ecosystem.
 [Expanding the stack](#expanding-the-stack)
 
 [Recipes](#recipes)
+- [Drizzle](#drizzle)
 - [Shadcn/ui](#shadcnui)
 <!-- toc:end -->
 
@@ -94,6 +95,38 @@ If you are using an agent, use the prompt in that section as a starting point. I
 ## Recipes
 
 These recipes can be applied with an agent, or copied from the applied branches.
+
+### Drizzle
+Drizzle is a lightweight TypeScript ORM that keeps database schema and queries close to regular code.
+
+Use it when your app needs database persistence without adding a full backend framework.
+
+> 💡 The branch uses PostgreSQL as the starter setup, but Drizzle supports [more](https://orm.drizzle.team/docs/get-started-postgresql). Adjust the prompt's dialect and driver if you want a different database.
+
+<details>
+<summary>Agent prompt</summary>
+
+```text
+Add minimal Drizzle ORM + PostgreSQL support to this vite-stack project.
+
+Implement exactly:
+- deps: drizzle-orm, pg
+- dev deps: drizzle-kit, @types/pg
+- drizzle.config.ts reading DATABASE_URL
+- lib/db/schema.ts with todos: id, text, createdAt
+- lib/db/index.ts exporting a typed db client
+- scripts: db:generate, db:migrate, db:studio
+- GET /api/todos returning the latest 20 todos and route mounted
+
+Give next-step notes for generate/migrate.
+```
+
+</details>
+
+Not using an agent?
+
+- [Applied branch](../../tree/recipe/drizzle)
+- [Diff](../../compare/main...recipe/drizzle)
 
 ### Shadcn/ui
 Shadcn is one of the most popular ui libraries that gives fullcontrol and extensibility over your components.
