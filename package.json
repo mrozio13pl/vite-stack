@@ -6,6 +6,8 @@
         "update-main-readme": "node scripts/update-main-readme.mjs MAIN_README.md"
     },
     "dependencies": {
+        "@fontsource/dela-gothic-one": "^5.2.7",
+        "fontkit": "^2.0.4",
         "github-slugger": "^2.0.0",
         "ultramatter": "^0.0.4"
     },

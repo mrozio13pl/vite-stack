@@ -1,6 +1,14 @@
-# vite-stack
+<div align="center">
+
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/vite-stack-light.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/vite-stack-dark.svg">
+    <img src="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/vite-stack-dark.svg" alt="vite-stack" height="72">
+</picture>
 
 A full-stack template combining best of technologies from JS ecosystem.
+
+</div>
 
 <!-- toc:start -->
 [Motivation](#motivation)
@@ -96,7 +104,7 @@ If you are using an agent, use the prompt in that section as a starting point. I
 
 These recipes can be applied with an agent, or copied from the applied branches.
 
-### Drizzle
+<h3 id="drizzle"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/drizzle-light.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/drizzle-dark.svg"><img src="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/drizzle-dark.svg" alt="Drizzle" height="56"></picture></h3>
 Drizzle is a lightweight TypeScript ORM that keeps database schema and queries close to regular code.
 
 Use it when your app needs database persistence without adding a full backend framework.
@@ -128,7 +136,7 @@ Not using an agent?
 - [Applied branch](../../tree/recipe/drizzle)
 - [Diff](../../compare/main...recipe/drizzle)
 
-### Shadcn/ui
+<h3 id="shadcnui"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/shadcn-light.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/shadcn-dark.svg"><img src="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/shadcn-dark.svg" alt="Shadcn/ui" height="56"></picture></h3>
 Shadcn is one of the most popular ui libraries that gives fullcontrol and extensibility over your components.
 
 To create a fully customizable theme visit [shadcn/create ⟶](https://ui.shadcn.com/create).
