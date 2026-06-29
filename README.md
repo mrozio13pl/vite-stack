@@ -1,8 +1,35 @@
-# vite-stack
+<div align="center">
+
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/vite-stack-light.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/vite-stack-dark.svg">
+    <img src="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/vite-stack-dark.svg" alt="vite-stack" height="72">
+</picture>
 
 A full-stack template combining best of technologies from JS ecosystem.
 
-[TOC]
+</div>
+
+<!-- toc:start -->
+
+[Motivation](#motivation)
+
+[Introduction](#introduction)
+
+- [The base stack](#the-base-stack)
+    - [App shell](#app-shell)
+    - [Routing](#routing)
+    - [API](#api)
+    - [Styling](#styling)
+    - [Code quality](#code-quality)
+
+[Expanding the stack](#expanding-the-stack)
+
+[Recipes](#recipes)
+
+- [Drizzle](#drizzle)
+- [Shadcn/ui](#shadcnui)
+  <!-- toc:end -->
 
 ## Motivation
 
@@ -73,3 +100,55 @@ Pre-commit hooks run through `simple-git-hooks` and `nano-staged`, so changed fi
 The base is meant to be extended through the sections below. Each feature should explain what it adds, why it is useful, and how it fits into the existing app.
 
 If you are using an agent, use the prompt in that section as a starting point. If you are not using an agent, follow the docs and examples directly.
+
+<!-- recipes:start -->
+
+## Recipes
+
+These recipes can be applied with an agent, or copied from the applied branches.
+
+<h3 id="drizzle"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/drizzle-light.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/drizzle-dark.svg"><img src="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/drizzle-dark.svg" alt="Drizzle" height="56"></picture></h3>
+Drizzle is a lightweight TypeScript ORM that keeps database schema and queries close to regular code.
+
+Use it when your app needs database persistence without adding a full backend framework.
+
+> 💡 The branch uses PostgreSQL as the starter setup, but Drizzle supports [more](https://orm.drizzle.team/docs/get-started-postgresql). Adjust the prompt's dialect and driver if you want a different database.
+
+<details>
+<summary>Agent prompt</summary>
+
+```text
+Add minimal Drizzle ORM + PostgreSQL support to this vite-stack project.
+
+Implement exactly:
+- deps: drizzle-orm, pg
+- dev deps: drizzle-kit, @types/pg
+- drizzle.config.ts reading DATABASE_URL
+- lib/db/schema.ts with todos: id, text, createdAt
+- lib/db/index.ts exporting a typed db client
+- scripts: db:generate, db:migrate, db:studio
+- GET /api/todos returning the latest 20 todos and route mounted
+
+Give next-step notes for generate/migrate.
+```
+
+</details>
+
+Not using an agent?
+
+- [Applied branch](../../tree/recipe/drizzle)
+- [Diff](../../compare/main...recipe/drizzle)
+
+<h3 id="shadcnui"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/shadcn-light.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/shadcn-dark.svg"><img src="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/shadcn-dark.svg" alt="Shadcn/ui" height="56"></picture></h3>
+Shadcn is one of the most popular ui libraries that gives fullcontrol and extensibility over your components.
+
+To create a fully customizable theme visit [shadcn/create ⟶](https://ui.shadcn.com/create).
+
+> 💡 The branch was set up using `pnpm dlx shadcn@latest init --preset b27Gdgau --base base --pointer`, and the font changed from `Inter` back to `Sora`.
+
+Not using an agent?
+
+- [Applied branch](../../tree/recipe/shadcn-ui)
+- [Diff](../../compare/main...recipe/shadcn-ui)
+
+<!-- recipes:end -->
