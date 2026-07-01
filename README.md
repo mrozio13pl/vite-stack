@@ -6,15 +6,30 @@
     <img src="https://raw.githubusercontent.com/mrozio13pl/vite-stack/recipes/recipe-headings/vite-stack-dark.svg" alt="vite-stack" height="72">
 </picture>
 
-A full-stack template combining best of technologies from JS ecosystem.
+<br />
+
+A full-stack expandable template for the web.
+
+<br />
+
+[![Use template](https://img.shields.io/badge/use%20template-84fc44?style=for-the-badge)](https://github.com/new?template_name=vite-stack&template_owner=mrozio13pl)
 
 </div>
 
+<details>
+
+<summary>
+    <h4>Open TOC</h4>
+</summary>
+
 <!-- toc:start -->
+[Introduction](#introduction)
+
+[Quick start](#quick-start)
+
 [Motivation](#motivation)
 
-[Introduction](#introduction)
-- [The base stack](#the-base-stack)
+[The base stack](#the-base-stack)
   - [App shell](#app-shell)
   - [Routing](#routing)
   - [API](#api)
@@ -28,17 +43,63 @@ A full-stack template combining best of technologies from JS ecosystem.
 - [Shadcn/ui](#shadcnui)
 <!-- toc:end -->
 
-## Motivation
-
-Over the years I've worked on various projects involving web-dev varying in magnitude and scale, trying numerous ways to have a pleasant DX. I found many solutions to not satisfy me with lack of control, no low-level integration, vagueness, bad performance and much more. This is my best attempt at making a template which integrates all of my favorite libraries and combines the frontend with the backend.
+</details>
 
 ## Introduction
 
-Vite-stack is a fully-featured stack built on Vite. It can be easily extended with agens using prompts given for each feature.
+Vite-stack is a fully-featured stack built on Vite. It gives you a small base with the core pieces for a full-stack app, then lets recipes add bigger decisions when you actually need them.
 
 While the codebase is pretty self-explanatory, I highly recommend reading through the readme as it shows the good standards and outlines long-term support.
 
-### The base stack
+## Quick start
+
+Create a project from the template, then run it:
+
+```sh
+pnpm install
+pnpm dev
+```
+
+Add an API route in `server/routes/example.ts`:
+
+```ts
+import { createRouter } from '../base';
+
+// 👇 Keep the route name with filename.
+export const exampleRouter = createRouter().get('/', (c) => {
+    return c.json({ message: 'Hello World!' } as const);
+});
+```
+
+Register it in `server/index.tsx`:
+
+```ts
+import { exampleRouter } from './routes/example'; // 👈 Import your router
+
+const api = createRouter()
+    .route('/example', exampleRouter) // 👈 Available under localhost:3000/example
+    .route('/test', testRouter);
+```
+
+Call it from the client with server-inferred types:
+
+```ts
+import { api } from '@/lib/api'; // 👈 Hono's RPC with server type-safety
+
+const res = await api.example.$get();
+const data = await res.json();
+// ☝️ data -> { message: 'Hello World!' }
+```
+
+For a new page, add a file under `client/routes`.
+
+## Motivation
+
+Over the years I've worked on various projects involving web-dev varying in magnitude and scale, trying numerous ways to have a pleasant DX without losing control. I found many solutions to hide too much, add unnecessary layers, feel vague, perform poorly, etc.
+
+This is my best attempt at making a flexible template which integrates my favorite parts of the JS ecosystem while keeping the frontend and backend together.
+
+## The base stack
 
 The base is what every feature builds on top of. It is intentionally small, but gives you the exact pieces needed for a full-stack app.
 
@@ -79,7 +140,7 @@ The default font is Sora, loaded through `@fontsource-variable/sora` and wired i
 - [TailwindCSS docs ⟶](https://tailwindcss.com/docs)
 - [Fontsource ⟶](https://fontsource.org/)
 
-> 💡 You might also want to use shadcn ui.
+> 💡 You might also want to use [shadcn/ui](#shadcnui).
 
 #### Code quality
 
