@@ -52,5 +52,5 @@
             "oxfmt"
         ]
     },
-    "packageManager": "pnpm@11.9.0"
+    "packageManager": "pnpm@11.10.0"
 }
