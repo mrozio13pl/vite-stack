@@ -16,7 +16,7 @@ importers:
         version: 5.2.8
       '@hono/node-server':
         specifier: ^2.0.8
-        version: 2.0.8(hono@4.12.29)
+        version: 2.0.8(hono@4.12.30)
       '@tanstack/react-query':
         specifier: ^5.101.2
         version: 5.101.2(react@19.2.7)
@@ -24,8 +24,8 @@ importers:
         specifier: ^1.170.17
         version: 1.170.17(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       hono:
-        specifier: ^4.12.29
-        version: 4.12.29
+        specifier: ^4.12.30
+        version: 4.12.30
       react:
         specifier: ^19.2.7
         version: 19.2.7
@@ -38,10 +38,10 @@ importers:
     devDependencies:
       '@hono/vite-build':
         specifier: ^1.11.1
-        version: 1.11.1(hono@4.12.29)
+        version: 1.11.1(hono@4.12.30)
       '@hono/vite-dev-server':
         specifier: ^0.26.1
-        version: 0.26.1(hono@4.12.29)
+        version: 0.26.1(hono@4.12.30)
       '@tailwindcss/vite':
         specifier: ^4.3.2
         version: 4.3.2(vite@8.1.4(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.22.4))
@@ -1027,8 +1027,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  hono@4.12.29:
-    resolution: {integrity: sha512-1hNiRjawYrLq/4m3DQQjPGFg0VZkk4RjQJDff/excI6Dm9BiL75qxGrd7/c6YOxPdq6AscP3LiXhQ6fKFC1Waw==}
+  hono@4.12.30:
+    resolution: {integrity: sha512-emn+JoJjrN9YTpRDS5it/UI2SO9BAE37T6I3d963RxcZ81G9A4pr2SZTEiiaiKbzx+NKRg5BZ89fCL7gCJCUog==}
     engines: {node: '>=16.9.0'}
 
   isbot@5.1.43:
@@ -1541,22 +1541,22 @@ snapshots:
 
   '@fontsource-variable/sora@5.2.8': {}
 
-  '@hono/node-server@1.19.14(hono@4.12.29)':
+  '@hono/node-server@1.19.14(hono@4.12.30)':
     dependencies:
-      hono: 4.12.29
+      hono: 4.12.30
 
-  '@hono/node-server@2.0.8(hono@4.12.29)':
+  '@hono/node-server@2.0.8(hono@4.12.30)':
     dependencies:
-      hono: 4.12.29
+      hono: 4.12.30
 
-  '@hono/vite-build@1.11.1(hono@4.12.29)':
+  '@hono/vite-build@1.11.1(hono@4.12.30)':
     dependencies:
-      hono: 4.12.29
+      hono: 4.12.30
 
-  '@hono/vite-dev-server@0.26.1(hono@4.12.29)':
+  '@hono/vite-dev-server@0.26.1(hono@4.12.30)':
     dependencies:
-      '@hono/node-server': 1.19.14(hono@4.12.29)
-      hono: 4.12.29
+      '@hono/node-server': 1.19.14(hono@4.12.30)
+      hono: 4.12.30
       minimatch: 9.0.9
 
   '@jridgewell/gen-mapping@0.3.13':
@@ -2043,7 +2043,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  hono@4.12.29: {}
+  hono@4.12.30: {}
 
   isbot@5.1.43: {}
 
