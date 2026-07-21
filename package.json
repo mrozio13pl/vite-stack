@@ -14,31 +14,31 @@
         "start": "node ."
     },
     "dependencies": {
-        "@fontsource-variable/sora": "^5.2.8",
-        "@hono/node-server": "^2.0.8",
+        "@fontsource-variable/sora": "^5.3.0",
+        "@hono/node-server": "^2.0.10",
         "@tanstack/react-query": "^5.101.2",
         "@tanstack/react-router": "^1.170.18",
-        "hono": "^4.12.30",
+        "hono": "^4.12.31",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
-        "tailwindcss": "^4.3.2"
+        "tailwindcss": "^4.3.3"
     },
     "devDependencies": {
         "@hono/vite-build": "^1.11.1",
         "@hono/vite-dev-server": "^0.26.1",
-        "@tailwindcss/vite": "^4.3.2",
+        "@tailwindcss/vite": "^4.3.3",
         "@tanstack/react-router-devtools": "^1.167.0",
-        "@tanstack/router-plugin": "^1.168.20",
+        "@tanstack/router-plugin": "^1.168.23",
         "@types/node": "^25.9.5",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
         "@vitejs/plugin-react": "^6.0.3",
         "nano-staged": "^1.0.2",
         "oxfmt": "^0.55.0",
-        "oxlint": "^1.73.0",
+        "oxlint": "^1.74.0",
         "simple-git-hooks": "^2.13.1",
         "typescript": "^6.0.3",
-        "vite": "^8.1.4"
+        "vite": "^8.1.5"
     },
     "simple-git-hooks": {
         "pre-commit": "pnpm exec nano-staged"
@@ -52,5 +52,5 @@
             "oxfmt"
         ]
     },
-    "packageManager": "pnpm@11.13.0"
+    "packageManager": "pnpm@11.15.1"
 }
