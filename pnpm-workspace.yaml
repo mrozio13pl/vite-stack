@@ -1,0 +1,6 @@
+overrides:
+    react: npm:@preact/compat@18.3.2
+    react-dom: npm:@preact/compat@18.3.2
+
+minimumReleaseAgeExclude:
+    - marked@18.0.7
