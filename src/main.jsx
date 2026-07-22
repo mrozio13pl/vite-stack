@@ -95,7 +95,7 @@ function TableOfContents({ headings, active }) {
 
                 <a href="https://github.com/mrozio13pl/vite-stack">
                     <li className="ml-2 mt-4 hover:(underline font-bold) underline-offset-2 font-mono flex items-center gap-x-2 text-sm cursor-pointer">
-                        <GithubIcon className="size-6 fill-[var(--color-foreground)]" />
+                        <GithubIcon className="size-6 fill-(--color-foreground)" />
                         mrozio13pl/vite-stack
                     </li>
                 </a>
@@ -107,67 +107,55 @@ function TableOfContents({ headings, active }) {
     );
 }
 
-function App() {
+async function loadPage() {
+    const response = await fetch(README_URL);
+    if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
+
+    const document = new DOMParser().parseFromString(
+        marked.parse(await response.text()),
+        'text/html',
+    );
+    const headings = [...document.querySelectorAll('h2, h3, h4')]
+        .filter((heading) => !heading.closest('details'))
+        .map(({ id, textContent, tagName }) => ({
+            id,
+            text: textContent,
+            depth: Number(tagName[1]),
+        }));
+
+    for (const picture of document.querySelectorAll('picture')) {
+        const image = picture.querySelector('img');
+        const darkSource = picture.querySelector('source[media="(prefers-color-scheme: dark)"]');
+        const lightSource = picture.querySelector('source[media="(prefers-color-scheme: light)"]');
+        if (!image || !darkSource || !lightSource) continue;
+
+        image.dataset.darkSrc = darkSource.srcset;
+        image.dataset.lightSrc = lightSource.srcset;
+        darkSource.remove();
+        lightSource.remove();
+    }
+
+    for (const code of document.querySelectorAll('code')) {
+        code.classList.add('font-mono');
+        if (code.parentElement?.tagName === 'PRE') {
+            code.innerHTML = highlight(code.textContent);
+
+            const pre = code.parentElement;
+            const wrapper = document.createElement('div');
+            const copyButtonRoot = document.createElement('span');
+            wrapper.className = 'code-block';
+            copyButtonRoot.className = 'copy-button-root';
+            pre.replaceWith(wrapper);
+            wrapper.append(pre, copyButtonRoot);
+        }
+    }
+
+    return { html: document.body.innerHTML, headings };
+}
+
+function App({ page }) {
     const { resolvedTheme } = useTheme();
-    const [page, setPage] = useState({ html: '', headings: [] });
-    const [active, setActive] = useState('');
-    const [error, setError] = useState('');
-
-    useEffect(() => {
-        fetch(README_URL)
-            .then((response) => {
-                if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
-                return response.text();
-            })
-            .then((markdown) => {
-                const document = new DOMParser().parseFromString(
-                    marked.parse(markdown),
-                    'text/html',
-                );
-                const headings = [...document.querySelectorAll('h2, h3, h4')]
-                    .filter((heading) => !heading.closest('details'))
-                    .map(({ id, textContent, tagName }) => ({
-                        id,
-                        text: textContent,
-                        depth: Number(tagName[1]),
-                    }));
-
-                for (const picture of document.querySelectorAll('picture')) {
-                    const image = picture.querySelector('img');
-                    const darkSource = picture.querySelector(
-                        'source[media="(prefers-color-scheme: dark)"]',
-                    );
-                    const lightSource = picture.querySelector(
-                        'source[media="(prefers-color-scheme: light)"]',
-                    );
-                    if (!image || !darkSource || !lightSource) continue;
-
-                    image.dataset.darkSrc = darkSource.srcset;
-                    image.dataset.lightSrc = lightSource.srcset;
-                    darkSource.remove();
-                    lightSource.remove();
-                }
-
-                for (const code of document.querySelectorAll('code')) {
-                    code.classList.add('font-mono');
-                    if (code.parentElement?.tagName === 'PRE') {
-                        code.innerHTML = highlight(code.textContent);
-
-                        const pre = code.parentElement;
-                        const wrapper = document.createElement('div');
-                        const copyButtonRoot = document.createElement('span');
-                        wrapper.className = 'code-block';
-                        copyButtonRoot.className = 'copy-button-root';
-                        pre.replaceWith(wrapper);
-                        wrapper.append(pre, copyButtonRoot);
-                    }
-                }
-
-                setPage({ html: document.body.innerHTML, headings });
-                setActive(headings[0]?.id ?? '');
-            })
-            .catch((caught) => setError(caught.message));
-    }, []);
+    const [active, setActive] = useState(page.headings[0]?.id ?? '');
 
     useEffect(() => {
         if (!page.html) return;
@@ -219,17 +207,6 @@ function App() {
         };
     }, [page.headings]);
 
-    if (error) {
-        return (
-            <main class="mx-auto max-w-3xl px-4 py-16">
-                <h1>Documentation unavailable</h1>
-                <p>{error}</p>
-            </main>
-        );
-    }
-
-    if (!page.html) return <p class="p-6 text-[var(--color-muted)]">Loading documentation…</p>;
-
     return (
         <div class="mx-auto flex max-w-5xl items-start gap-12 border-l border-l-[var(--color-border-subtle)] border-l-dashed px-4 [&>main]:py-8 lg:px-8">
             <aside class="sticky top-8 hidden max-h-[calc(100vh-4rem)] w-56 shrink-0 overflow-y-auto lg:block">
@@ -254,9 +231,20 @@ function App() {
     );
 }
 
-render(
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <App />
-    </ThemeProvider>,
-    document.querySelector('#app'),
-);
+try {
+    const page = await loadPage();
+    render(
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <App page={page} />
+        </ThemeProvider>,
+        document.querySelector('#app'),
+    );
+} catch (error) {
+    render(
+        <main class="mx-auto max-w-3xl px-4 py-16">
+            <h1>Documentation unavailable</h1>
+            <p>{error.message}</p>
+        </main>,
+        document.querySelector('#app'),
+    );
+}
