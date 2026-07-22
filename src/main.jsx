@@ -12,6 +12,7 @@ import { CopyIcon } from './icons/copy.jsx';
 import { ThemeIcon } from './icons/theme.jsx';
 
 const README_URL = 'https://raw.githubusercontent.com/mrozio13pl/vite-stack/main/README.md';
+const README_PAGE_URL = 'https://github.com/mrozio13pl/vite-stack/blob/main/README.md';
 
 marked.use(gfmHeadingId());
 
@@ -95,7 +96,7 @@ function TableOfContents({ headings, active }) {
 
                 <a href="https://github.com/mrozio13pl/vite-stack">
                     <li className="ml-2 mt-4 hover:(underline font-bold) underline-offset-2 font-mono flex items-center gap-x-2 text-sm cursor-pointer">
-                        <GithubIcon className="size-6 fill-(--color-foreground)" />
+                        <GithubIcon className="size-6 fill-[var(--color-foreground)]" />
                         mrozio13pl/vite-stack
                     </li>
                 </a>
@@ -122,6 +123,13 @@ async function loadPage() {
             text: textContent,
             depth: Number(tagName[1]),
         }));
+
+    for (const anchor of document.querySelectorAll('a[href]')) {
+        const href = anchor.getAttribute('href');
+        if (!href.startsWith('#') && !URL.canParse(href)) {
+            anchor.setAttribute('href', new URL(href, README_PAGE_URL).href);
+        }
+    }
 
     for (const picture of document.querySelectorAll('picture')) {
         const image = picture.querySelector('img');
