@@ -16,8 +16,8 @@
     "dependencies": {
         "@fontsource-variable/sora": "^5.3.0",
         "@hono/node-server": "^2.1.1",
-        "@tanstack/react-query": "^5.101.4",
-        "@tanstack/react-router": "^1.170.31",
+        "@tanstack/react-query": "^5.102.2",
+        "@tanstack/react-router": "^1.170.32",
         "hono": "^4.13.3",
         "react": "^19.2.8",
         "react-dom": "^19.2.8",
@@ -28,10 +28,10 @@
         "@hono/vite-dev-server": "^0.26.1",
         "@tailwindcss/vite": "^4.3.3",
         "@tanstack/react-router-devtools": "^1.167.1",
-        "@tanstack/router-plugin": "^1.168.34",
+        "@tanstack/router-plugin": "^1.168.35",
         "@types/node": "^25.9.5",
         "@types/react": "^19.2.18",
-        "@types/react-dom": "^19.2.4",
+        "@types/react-dom": "^19.2.5",
         "@vitejs/plugin-react": "^6.1.0",
         "nano-staged": "^1.0.2",
         "oxfmt": "^0.55.0",
@@ -52,5 +52,5 @@
             "oxfmt"
         ]
     },
-    "packageManager": "pnpm@11.22.0"
+    "packageManager": "pnpm@11.23.0"
 }
